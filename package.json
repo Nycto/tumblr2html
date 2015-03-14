@@ -1,0 +1,21 @@
+{
+  "name": "tumbler2html",
+  "version": "0.1.0",
+  "author": "James Frasca <james@roundeights.com>",
+  "description": "Formats the results from the Tumblr JavaScript API as HTML",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nycto/tumblr2html.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1"
+  },
+  "scripts": {
+    "test": "grunt --verbose"
+  },
+  "readmeFilename": "README.md"
+}

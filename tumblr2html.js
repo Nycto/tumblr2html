@@ -1,7 +1,8 @@
 /**
  * Takes the result of a tumblr JS API request and turns it into HTML
  */
-function tumblr2html ( tumblr_api_read, options ) {
+window.tumblr2html = function tumblr3html ( tumblr_api_read, options ) {
+    "use strict";
 
     options = options || {};
 
@@ -46,9 +47,9 @@ function tumblr2html ( tumblr_api_read, options ) {
 
     // Grab any format overrides from the options hash
     if ( options.formats ) {
-        for ( key in options.formats ) {
+        for ( var key in options.formats ) {
             if ( options.formats.hasOwnProperty(key) ) {
-                formats[key] = options.formats[key]
+                formats[key] = options.formats[key];
             }
         }
     }
@@ -68,13 +69,15 @@ function tumblr2html ( tumblr_api_read, options ) {
         );
     }
 
+    var posts = tumblr_api_read.posts;
+
     var html =
-        tumblr_api_read.posts
+        posts
         .slice(
             0,
             options.limit ?
-                Math.min(tumblr_api_read.length, options.limit) :
-                tumblr_api_read.posts.length
+                Math.min(posts.length, options.limit) :
+                posts.length
         )
         .map(function (post) {
             var format = formats[post.type];
@@ -86,12 +89,9 @@ function tumblr2html ( tumblr_api_read, options ) {
                     return format(post);
                 }
             }
-            else {
-                console.log( post );
-            }
             return "";
         })
-        .join("\n")
+        .join("\n");
 
     if ( options.id ) {
         document.getElementById(options.id).innerHTML = html;
@@ -99,5 +99,5 @@ function tumblr2html ( tumblr_api_read, options ) {
     else {
         document.write(html);
     }
-}
+};
 
