@@ -11,10 +11,9 @@ module.exports = function(grunt) {
             files: ['*.js'],
             options: {
                 bitwise: true,
-                camelcase: false,
+                camelcase: true,
                 curly: true,
                 eqeqeq: true,
-                evil: true,
                 forin: true,
                 immed: true,
                 indent: 4,
